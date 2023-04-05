@@ -1,12 +1,12 @@
 Case Control is a web app build with Asp.Net MVC (.Net Framework 4.7.1) that allows for medical statistical data gathering. 
 
-UTILITY
+UTILITY:
 
 * This project is useful for a myriad of applications in which random events and their side effects need to be reported and aggregated;
 * The naming of the domain classes and its list of properties is related to the specific medical domain for which it was created, but a simple 
 refactoring can turn this project into a generic version of itself or a specific version for another domain.
 
-PURPOSE
+PURPOSE:
 
 It allows doctors to: 
 
@@ -14,7 +14,7 @@ a) report collateral effects that their patients seemed to notice after receivin
 
 b) browse aggregated reports on the collective data input.
 
-FUNCTIONALITIES / FUNCTIONAL REQUIREMENTS
+FUNCTIONALITIES / FUNCTIONAL REQUIREMENTS:
 
 The functionalities include:
 
@@ -26,6 +26,8 @@ A) For doctors:
     2. Patient's vaccination doses received;
     3. Patient's reactions perceived;
 * Aggregated Statistical Reports;
+
+To report patient's reactions, the doctor is presented with a step-by-step registration process.
 
 B) For system administrators:
 
@@ -39,15 +41,13 @@ C) For users:
 * User sign-up;
 * Access control.
 
-To report patient's reactions, the doctor is presented with a step-by-step registration process.
-
-NOTICE / DISCLOSURE
+NOTICE / DISCLOSURE:
 
 The development of this app was requested by a freelance client. It doesn't represent any political or scientific view of this developer towards vaccination.
 
 It is being shared in Github as a showcase of my work, since this was a job that I have executed alone, in a very short period of time. It is also being shared for academic purposes and it is small enough to be able to be comprehended end-to-end pretty quickly, and because it can be refactored into a more generic version or domain-specific versions and provide utility for different applications.
 
-DEVELOPMENT PROCESS
+DEVELOPMENT PROCESS:
 
 Tech steps included:
 
