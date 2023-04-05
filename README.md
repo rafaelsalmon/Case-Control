@@ -56,7 +56,7 @@ Tech steps included:
 * Enabling and configuring Migrations;
 * Scaffolding Controllers and Views;
 * Creating a Database in SQL Azure;
-* Creating and Updating database schema with Nuget Console commmand-line prompts (using Migrations);
+* Creating and updating database schema using Code First Migrations;
 * Customizing Controllers with business rules, validations and workflows;
 * Customizing Views with workflows and validations.
 
@@ -90,6 +90,24 @@ USAGE:
       your local IP for you).
 
 2) Create a new Migration.
+
+    Command: "add-migration InitialCreate" (to be executed in Nuget Package Manager Console.
+    
+    ATTENTION: 
+    
+        a) Make sure Migrations are enabled. If not, run "enable-migrations";
+        b) To create a new Migration, run "add-migration InitialCreate", where InitialCreate is the name you give to the initial Migration;
+        c) Make sure Automatic Migrations are enabled in the Configuration. Check the reference code below:
+        
+        /*Code Start*/
+        internal sealed class Configuration : DbMigrationsConfiguration<Context>
+        {
+            public Configuration()
+            {
+                AutomaticMigrationsEnabled = true;
+            }
+        }
+        /*Code End*/
 
 3) Generate database physical mode (scructure) from the project's Model classes in the DBSet. 
     For this step, open Package Manager Console and type "update-database -verbose".
