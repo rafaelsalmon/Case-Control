@@ -1,6 +1,7 @@
 Case Control is a web app build with Asp.Net MVC (.Net Framework 4.7.1) that allows for medical statistical data gathering. It allows doctors to: 
 
 a) report collateral effects that their patients seemed to notice after receiving vaccination doses; and 
+
 b) browse aggregated reports on the collective data input.
 
 * This project is useful for a myriad of applications in which random events and their side effects need to be reported and aggregated.
