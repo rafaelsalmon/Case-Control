@@ -1,0 +1,147 @@
+﻿@model ControleDeCasos.Models.Caso
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Caso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.Nome)
+        </dt>
+
+        <dd>
+            @ViewBag.Estado
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais.Nome)
+        </dt>
+
+        <dd>
+            @ViewBag.Pais
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Controle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Controle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IniciaisPaciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IniciaisPaciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SexoTexto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comorbidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComorbidadeTexto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiagnosticoAnterior)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiagnosticoAnteriorTexto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CondicaoEspecial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CondicaoEspecialTexto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoAtual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoAtualTexto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hospitalizado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hospitalizado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Severidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeveridadeTexto)
+        </dd>
+
+    </dl>
+</div>
+@{int i = 0;}
+<div class="form-group">
+    @Html.Label("Reações:", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+
+        @foreach (var item in ViewBag.ReacoesSelecionadas)
+        {
+
+            <input type="checkbox"
+                   name=@String.Concat("TipoReacaoSelect", i)
+                   value="@item.Value"
+                   disabled
+                   checked />
+            @item.Text
+            <br />
+            i++;
+        }
+
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CasoId }) |
+    @Html.ActionLink("Voltar à Listagem", "Index")
+</p>

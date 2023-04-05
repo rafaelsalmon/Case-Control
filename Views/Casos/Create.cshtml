@@ -1,0 +1,304 @@
+﻿@model ControleDeCasos.Models.Caso
+
+@{
+    ViewBag.Title = "Criar";
+}
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('#PaisId').change(function () {
+        var pais_id = $(this).val();
+        getEstados(pais_id);
+    });
+
+    function getEstados(pais_id){
+        $select = $('#EstadoId')
+        $select.html('<option value="">Aguarde...</option>');
+        $.ajax({
+                dataType: 'json',
+                type: "GET",
+                url: '@Url.Action("GetAll", "Estados")',
+                data: { paisId: pais_id},
+                success:function(data) {
+                    
+                    $select.html('');
+                    $.each(data, function(key, val) {
+                        $select.append('<option value="' + val.EstadoId + '">' + val.Nome + '</option>');
+                    })
+                },
+            error: function () {
+                $select.html('<option value="-2">Tente novamente...</option>');
+            }
+        });
+    }
+});
+</script>
+
+
+<h2>Criar</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Caso</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Controle, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Controle, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Controle, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IniciaisPaciente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IniciaisPaciente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IniciaisPaciente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sexo, "Sexo", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Sexo", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PaisId, "País", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PaisId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PaisId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EstadoId, "Estado", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("EstadoId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EstadoId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comorbidade, "Comorbidade", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Comorbidade", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Comorbidade, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DiagnosticoAnterior, "Diagnóstico Anterior", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("DiagnosticoAnterior", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DiagnosticoAnterior, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CondicaoEspecial, "Condição Especial", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CondicaoEspecial", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CondicaoEspecial, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EstadoAtual, "Estado Atual", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("EstadoAtual", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EstadoAtual, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!--Primeira dose-->
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PrimeiraDoseLaboratorioId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PrimeiraDoseLaboratorioId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PrimeiraDoseLaboratorioId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PrimeiraDoseData, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PrimeiraDoseData, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PrimeiraDoseData, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PrimeiraDoseLote, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PrimeiraDoseLote, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PrimeiraDoseLote, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PrimeiraDoseErroAplicacao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.PrimeiraDoseErroAplicacao, "True")
+            @Html.RadioButtonFor(model => model.PrimeiraDoseErroAplicacao, "False")
+            @Html.ValidationMessageFor(model => model.PrimeiraDoseErroAplicacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!--Segunda dose-->
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SegundaDoseLaboratorioId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("SegundaDoseLaboratorioId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SegundaDoseLaboratorioId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.SegundaDoseData, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SegundaDoseData, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SegundaDoseData, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.SegundaDoseLote, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SegundaDoseLote, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SegundaDoseLote, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.SegundaDoseErroAplicacao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.SegundaDoseErroAplicacao, "True")
+            @Html.RadioButtonFor(model => model.SegundaDoseErroAplicacao, "False")
+            @Html.ValidationMessageFor(model => model.SegundaDoseErroAplicacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!--Terceira dose-->
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TerceiraDoseLaboratorioId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TerceiraDoseLaboratorioId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TerceiraDoseLaboratorioId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TerceiraDoseData, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TerceiraDoseData, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TerceiraDoseData, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TerceiraDoseLote, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TerceiraDoseLote, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TerceiraDoseLote, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TerceiraDoseErroAplicacao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.TerceiraDoseErroAplicacao, "True")
+            @Html.RadioButtonFor(model => model.TerceiraDoseErroAplicacao, "False")
+            @Html.ValidationMessageFor(model => model.TerceiraDoseErroAplicacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!--Quarta dose-->
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.QuartaDoseLaboratorioId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("QuartaDoseLaboratorioId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.QuartaDoseLaboratorioId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.QuartaDoseData, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.QuartaDoseData, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.QuartaDoseData, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.QuartaDoseLote, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.QuartaDoseLote, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.QuartaDoseLote, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.QuartaDoseErroAplicacao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.QuartaDoseErroAplicacao, "True")
+            @Html.RadioButtonFor(model => model.QuartaDoseErroAplicacao, "False")
+            @Html.ValidationMessageFor(model => model.QuartaDoseErroAplicacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!--Quinta dose-->
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.QuintaDoseLaboratorioId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("QuintaDoseLaboratorioId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.QuintaDoseLaboratorioId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.QuintaDoseData, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.QuintaDoseData, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.QuintaDoseData, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.QuintaDoseLote, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.QuintaDoseLote, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.QuintaDoseLote, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.QuintaDoseErroAplicacao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(model => model.QuintaDoseErroAplicacao, "True")
+            @Html.RadioButtonFor(model => model.QuintaDoseErroAplicacao, "False")
+            @Html.ValidationMessageFor(model => model.QuintaDoseErroAplicacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Criar" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Voltar à Listagem", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

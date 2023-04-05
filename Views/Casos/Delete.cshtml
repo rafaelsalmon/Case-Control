@@ -1,0 +1,105 @@
+﻿@model ControleDeCasos.Models.Caso
+
+@{
+    ViewBag.Title = "Apagar";
+}
+
+<h2>Apagar</h2>
+
+<h3>Tem certeza de que deseja apagar isto?</h3>
+<div>
+    <h4>Caso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.Nome)
+        </dt>
+
+        <dd>
+            @ViewBag.Estado
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais.Nome)
+        </dt>
+
+        <dd>
+            @ViewBag.Pais
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Controle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Controle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IniciaisPaciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IniciaisPaciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SexoTexto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comorbidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComorbidadeTexto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiagnosticoAnterior)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiagnosticoAnteriorTexto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CondicaoEspecial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CondicaoEspecialTexto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoAtual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoAtualTexto)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Apagar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar à Listagem", "Index")
+        </div>
+    }
+</div>

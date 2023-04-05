@@ -1,0 +1,23 @@
+﻿@model Dictionary<string, int>
+@{
+    ViewBag.Title = "Relatórios";
+}
+<h2>@ViewBag.Title</h2>
+<h3>Estatísticas com base em todos os casos</h3>
+
+
+<div>
+    Número de casos: @ViewBag.NumeroDeCasos
+</div>
+<div>
+    Número de reações geral: @ViewBag.TotalReacoesGeral
+</div>
+<div>
+    Número de reações por grupo:
+</div>
+<div>
+    @foreach (KeyValuePair<string, int> pair in Model)
+    { 
+        <span>@pair.Key  - @pair.Value</span><br/>
+    }
+</div>

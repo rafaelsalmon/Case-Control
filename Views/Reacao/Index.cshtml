@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ControleDeCasos.Models.Reacao>
+
+@{
+    ViewBag.Title = "Listagem";
+}
+
+<h2>Listagem</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo(a)", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Caso.Controle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoReacao.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Caso.Controle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoReacao.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ReacaoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.ReacaoId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.ReacaoId })
+        </td>
+    </tr>
+}
+
+</table>
