@@ -75,31 +75,29 @@ USAGE:
 
 1) In root file Web.config, insert the connection string to a SQL Azure / SQL Server Database:
 
+      ```
       <connectionStrings>
         <add name="DefaultConnection" connectionString="[INSERT CONNECTION STRING HERE, WITHOUT BRACKETS]"
           providerName="System.Data.SqlClient" />
       </connectionStrings>
-
-      If your SQL Server or SQL Azure is not running on the same server or desktop instance as your web application (for instance, 
-      you are testing the web app in Visual Studio using IIS and the database service is one that you created in Azure), then 
-      you may want to whitelist your local IP in the database server (or desktop) instance firewall (in Azure, you can do it directly on the SQL 
-      database configuration).
+      ```
       
-      ATTENTION: Make sure to whitelist your web app server IP (if you are testing it locally, your local IP) on the firewall of your server providing SQL Server
-      services. If you created an SQL Azure Database, then you can register the IP directly on the SQL Database management page on the Azure Portal (it even detects 
-      your local IP for you).
+      ATTENTION: If your SQL Server or SQL Azure is not running on the same server or desktop instance as your web application (for instance, you are testing the web  
+      app locally in Visual Studio using IIS and the database service is one that you created in Azure), then make sure to whitelist your web app server IP (if you are 
+      testing it locally, your local IP) on the firewall of your server providing SQL Server services. If you created an SQL Azure Database, then you can register the 
+      IP directly on the SQL Database management page on the Azure Portal (it even detects your local IP for you).
 
 2) Create a new Migration.
 
-    Command: "add-migration InitialCreate" (to be executed in Nuget Package Manager Console.
+    Command: `add-migration InitialCreate` (to be executed in Nuget Package Manager Console.
     
     ATTENTION: 
     
-        a) Make sure Migrations are enabled. If not, run "enable-migrations";
-        b) To create a new Migration, run "add-migration InitialCreate", where InitialCreate is the name you give to the initial Migration;
+        a) Make sure Migrations are enabled. If not, run `enable-migrations`;
+        b) To create a new Migration, run `add-migration InitialCreate`, where InitialCreate is the name you give to the initial Migration;
         c) Make sure Automatic Migrations are enabled in the Configuration. Check the reference code below:
         
-            /*Code Start*/
+            ```
             internal sealed class Configuration : DbMigrationsConfiguration<Context>
             {
                 public Configuration()
@@ -107,7 +105,7 @@ USAGE:
                     AutomaticMigrationsEnabled = true;
                 }
             }
-            /*Code End*/
+            ```
 
 3) Generate database physical mode (scructure) from the project's Model classes in the DBSet. 
     For this step, open Package Manager Console and type "update-database -verbose".
