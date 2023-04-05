@@ -85,8 +85,8 @@ USAGE:
       you may want to whitelist your local IP in the database server (or desktop) instance firewall (in Azure, you can do it directly on the SQL 
       database configuration).
       
-      ATTENTION: Make sure to whitelist your web app server IP (if you are testing it locally, your local IP) on the firewall of your server providing SQL Server       
-      services. If you created an SQL Azure Database, then you can register the IP directly on the SQL Database management page on the Azure Portal (it even detects   
+      ATTENTION: Make sure to whitelist your web app server IP (if you are testing it locally, your local IP) on the firewall of your server providing SQL Server
+      services. If you created an SQL Azure Database, then you can register the IP directly on the SQL Database management page on the Azure Portal (it even detects 
       your local IP for you).
 
 2) Create a new Migration.
