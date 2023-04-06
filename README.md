@@ -1,12 +1,12 @@
 Case Control is a web app build with Asp.Net MVC (.Net Framework 4.7.1) that allows for medical statistical data gathering. 
 
-# UTILITY:
+# Utility:
 
 * This project is useful for a myriad of applications in which random events and their side effects need to be reported and aggregated;
 * The naming of the domain classes and its list of properties is related to the specific medical domain for which it was created, but a simple 
 refactoring can turn this project into a generic version of itself or a specific version for another domain.
 
-# PURPOSE:
+# Purpose:
 
 It allows doctors to: 
 
@@ -113,7 +113,7 @@ Feel free to ask any questions and to contribute.
 3) Generate database physical mode (scructure) from the project's Model classes in the DBSet. 
     For this step, open Package Manager Console and type `update-database -verbose`.
 
-# COMMENTS:
+# COMMENTS ON CODE / CODE DOCUMENTING:
 
  Comments in code are in both English (marked by "EN-US") and Portuguese (marked by "PT-BR"). It was built in Portuguese, so the name of the entities are ins this 
  language. Nevertheless, you can see the translation of the entities' names and their properties' names inside the Model classes.
