@@ -1,20 +1,20 @@
 Case Control is a web app build with Asp.Net MVC (.Net Framework 4.7.1) that allows for medical statistical data gathering. 
 
-# UTILITY:
+# UTILITY
 
 * This project is useful for a myriad of applications in which random events and their side effects need to be reported and aggregated;
 * The naming of the domain classes and its list of properties is related to the specific medical domain for which it was created, but a simple 
 refactoring can turn this project into a generic version of itself or a specific version for another domain.
 
-# PURPOSE:
+# PURPOSE
 
 It allows doctors to: 
 
-a) report collateral effects that their patients seemed to notice after receiving vaccination doses; and 
+* report collateral effects that their patients seemed to notice after receiving vaccination doses; and 
 
-b) browse aggregated reports on the collective data input.
+* browse aggregated reports on the collective data input.
 
-FUNCTIONALITIES / FUNCTIONAL REQUIREMENTS:
+# FUNCTIONALITIES / FUNCTIONAL REQUIREMENTS
 
 The functionalities include:
 
@@ -41,13 +41,13 @@ C) For users:
 * User sign-up;
 * Access control.
 
-# NOTICE / DISCLOSURE:
+# NOTICE / DISCLOSURE
 
 The development of this app was requested by a freelance client. It doesn't represent any political or scientific view of this developer towards vaccination.
 
 It is being shared in Github as a showcase of my work, since this was a job that I have executed alone, in a very short period of time. It is also being shared for academic purposes and it is small enough to be able to be comprehended end-to-end pretty quickly, and because it can be refactored into a more generic version or domain-specific versions and provide utility for different applications.
 
-# DEVELOPMENT PROCESS:
+# DEVELOPMENT PROCESS
 
 Tech steps included:
 
@@ -60,7 +60,7 @@ Tech steps included:
 * Customizing Controllers with business rules, validations and workflows;
 * Customizing Views with workflows and validations.
 
-# FUTURE UPGRADES:
+# FUTURE UPGRADES
 
 As a small MVP-like product resulting of a short deadline project, it showcases basic architecture. It can be refactored for further growth 
 using CQRS, SOLID principles, CLEAN architecture principles and so on.
@@ -71,7 +71,7 @@ As an MVP, this product used bare bones tamplate designs with Bootstrap. There i
 
 Feel free to ask any questions and to contribute.
 
-# USAGE:
+# USAGE
 
 1) In root file Web.config, insert the connection string to a SQL Azure / SQL Server Database:
 
@@ -113,11 +113,11 @@ Feel free to ask any questions and to contribute.
 3) Generate database physical mode (scructure) from the project's Model classes in the DBSet. 
     For this step, open Package Manager Console and type `update-database -verbose`.
 
-# COMMENTS ON CODE / CODE DOCUMENTING:
+# COMMENTS ON CODE / CODE DOCUMENTING
 
  Comments in code are in both English (marked by "EN-US") and Portuguese (marked by "PT-BR"). It was built in Portuguese, so the name of the entities are ins this 
  language. Nevertheless, you can see the translation of the entities' names and their properties' names inside the Model classes.
 
-# LEARNING:
+# LEARNING
 
  The easiest way to understand the whole system, its definitions and business rules is to start at Models/Caso.cs
