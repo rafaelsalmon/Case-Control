@@ -1,12 +1,12 @@
 Case Control is a web app build with Asp.Net MVC (.Net Framework 4.7.1) that allows for medical statistical data gathering. 
 
-# Utility:
+# UTILITY:
 
 * This project is useful for a myriad of applications in which random events and their side effects need to be reported and aggregated;
 * The naming of the domain classes and its list of properties is related to the specific medical domain for which it was created, but a simple 
 refactoring can turn this project into a generic version of itself or a specific version for another domain.
 
-# Purpose:
+# PURPOSE:
 
 It allows doctors to: 
 
